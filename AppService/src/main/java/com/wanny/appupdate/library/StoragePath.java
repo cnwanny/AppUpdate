@@ -21,16 +21,9 @@ public class StoragePath {
     public static String storageHome = "";
     //跟目录
     public static String homeDir = "";
-    //照片
-    public static String photoDir = "";
-    //缓存
-    public static String cacheDir = "";
-    //下载缓存的路径
-    public static String loadCacheDir = "";
     //apk缓存路径
     public static String apkDir = "";
-    //临时文件目录
-    public static String tempDir = "";
+
 
 
     /**
