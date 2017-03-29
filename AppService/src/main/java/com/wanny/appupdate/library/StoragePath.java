@@ -32,22 +32,6 @@ public class StoragePath {
     //临时文件目录
     public static String tempDir = "";
 
-//	public static String storageHome = "/mnt/sdcard";
-//	//跟目录
-//	public static String homeDir = "/mnt/sdcard/hifosurvey";
-//	//照片
-//	public static String photoDir = "/mnt/sdcard/hifosurvey/photo";
-//	//缓存
-//	public static String cacheDir = "/mnt/sdcard/hifosurvey/cache";
-//	//查勘内容缓存路径
-//	public static String surveyCacheDir = "/mnt/sdcard/hifosurvey/survey_cache";
-//	//下载缓存的路径
-//	public static String loadCacheDir = "/mnt/sdcard/hifosurvey/load_cache";
-//    //apk缓存路径
-//	public static String apkDir = "/mnt/sdcard/hifosurvey/apk/";
-//	//临时文件目录
-//	public static String tempDir = "/mnt/sdcard/hifosurvey/temp/";
-
 
     /**
      * 功能 ： 获取sd卡的根路径
@@ -73,7 +57,6 @@ public class StoragePath {
                 Environment.MEDIA_MOUNTED);
     }
 
-
     /**
      * 建立缓存目录
      */
@@ -87,54 +70,22 @@ public class StoragePath {
         if (!isSdExists())
             return;
         storageHome = getSdPath();
-        homeDir = storageHome + "/HifoAgentSurvey";
+//        homeDir = storageHome + "/AppupdateCache";
 
 /** 主目录 */
 
-        File file = new File(storageHome, "HifoAgentSurvey");
+        File file = new File(storageHome, "AppupdateCache");
         if (!file.exists()) {
             file.mkdirs();
         }
         homeDir = file.getAbsolutePath();
 
-
-/** 拍照图片缓存 */
-
-        file = new File(homeDir + "/photo");
-        if (!file.exists()) {
-            file.mkdirs();
-        }
-        photoDir = file.getAbsolutePath();
-
-
-/** 数据缓存目录 */
-
-        file = new File(homeDir + "/cache");
-        if (!file.exists()) {
-            file.mkdirs();
-        }
-        cacheDir = file.getAbsolutePath();
-
-
-/** 固定数据缓存 */
-
-        file = new File(homeDir + "/load_cache");
-        if (!file.exists()) {
-            file.mkdirs();
-        }
-        loadCacheDir = file.getAbsolutePath();
-
         //APK下载目录
         file = new File(homeDir + "/apkDir");
-        if (!file.exists()) {///////
+        if (!file.exists()) {
             file.mkdirs();
         }
         apkDir = file.getAbsolutePath();
-        //临时文件目录
-        file = new File(tempDir);
-        if (!file.exists()) {
-            file.mkdirs();
-        }
     }
 
 
