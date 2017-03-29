@@ -25,7 +25,6 @@ public class StoragePath {
     public static String apkDir = "";
 
 
-
     /**
      * 功能 ： 获取sd卡的根路径
      * 传递参数 ：
@@ -63,8 +62,6 @@ public class StoragePath {
         if (!isSdExists())
             return;
         storageHome = getSdPath();
-//        homeDir = storageHome + "/AppupdateCache";
-
 /** 主目录 */
 
         File file = new File(storageHome, "AppupdateCache");

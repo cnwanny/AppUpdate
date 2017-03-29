@@ -153,6 +153,7 @@ public class AppUpDateService extends Service {
         } else {
             String localpath;
             if (!TextUtils.isEmpty(StoragePath.apkDir)) {
+
                 File file = new File(StoragePath.apkDir, appName);
                 if (file.exists()) {
                     file.delete();
