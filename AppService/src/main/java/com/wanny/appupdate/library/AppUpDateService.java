@@ -5,6 +5,8 @@ import android.app.PendingIntent;
 import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.IBinder;
 import android.os.Message;
@@ -121,7 +123,8 @@ public class AppUpDateService extends Service {
         Intent intent = new Intent();
         pendingIntent = PendingIntent.getActivity(context, 0, intent, 0);
         builder = new NotificationCompat.Builder(this);
-        builder.setSmallIcon(sourceId);
+        Bitmap bitmap = BitmapFactory.decodeResource(getResources(),sourceId);
+        builder.setLargeIcon(bitmap);
         nManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
         remoteViews = new RemoteViews(getPackageName(), R.layout.progress_content_view_dialog);
         builder.setContent(remoteViews);
@@ -131,16 +134,15 @@ public class AppUpDateService extends Service {
         builder.setContentIntent(pendingIntent);
         nManager.notify(100, builder.build());
 
-        Message msg = new Message();
-        msg.what = 0x0001;
-        msg.obj = 50;
-        handler.sendMessageDelayed(msg,5000);
-
-        Message msg2 = new Message();
-        msg2.what = 0x0002;
-        msg2.obj = 100;
-        handler.sendMessageDelayed(msg2,10000);
-
+//        Message msg = new Message();
+//        msg.what = 0x0001;
+//        msg.obj = 50;
+//        handler.sendMessageDelayed(msg,5000);
+//
+//        Message msg2 = new Message();
+//        msg2.what = 0x0002;
+//        msg2.obj = 100;
+//        handler.sendMessageDelayed(msg2,10000);
     }
 
 
