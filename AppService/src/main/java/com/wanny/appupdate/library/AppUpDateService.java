@@ -48,6 +48,7 @@ public class AppUpDateService extends Service {
 
 
     private String titleName = "";
+    private String type  ="";
     private int sourceId;
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
@@ -57,6 +58,9 @@ public class AppUpDateService extends Service {
             }
             if(intent.hasExtra("appName")){
                 titleName = intent.getStringExtra("appName");
+            }
+            if(intent.hasExtra("type")){
+                type = intent.getStringExtra("type");
             }
             if (intent.hasExtra("appurl")) {
                 String appurl = intent.getStringExtra("appurl");
@@ -123,8 +127,13 @@ public class AppUpDateService extends Service {
         Intent intent = new Intent();
         pendingIntent = PendingIntent.getActivity(context, 0, intent, 0);
         builder = new NotificationCompat.Builder(this);
-        Bitmap bitmap = BitmapFactory.decodeResource(getResources(),sourceId);
-        builder.setLargeIcon(bitmap);
+        if(type.equals("parent")){
+            builder.setSmallIcon(R.drawable.icon_app_parent);
+        }else if(type.equals("teacher")){
+            builder.setSmallIcon(R.drawable.icon_app_teacher);
+        }else{
+            builder.setSmallIcon(sourceId);
+        }
         nManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
         remoteViews = new RemoteViews(getPackageName(), R.layout.progress_content_view_dialog);
         builder.setContent(remoteViews);
